@@ -4,10 +4,10 @@ public class Line2
     public double m;
 
     //  Line horizontal intercept.
-    private double x0;
+    protected double x0;
 
     //  Line vertical intercept.
-    private double y0;
+    protected double y0;
 
     public Line2(double m, Vector2 p)
     {
