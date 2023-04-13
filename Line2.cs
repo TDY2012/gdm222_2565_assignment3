@@ -1,26 +1,38 @@
 public class Line2
 {
     //  Line slope.
-    public double m;
+    protected double m;
+    public double M
+    {
+        get { return this.m; }
+    }
 
     //  Line horizontal intercept.
     protected double x0;
+    public double X0
+    {
+        get { return this.x0; }
+    }
 
     //  Line vertical intercept.
     protected double y0;
+    public double Y0
+    {
+        get { return this.y0; }
+    }
 
     public Line2(double m, Vector2 p)
     {
         this.m = m;
-        this.x0 = p.x - (p.y/this.m);
-        this.y0 = p.y - (this.m*p.x);
+        this.x0 = p.X - (p.Y/this.M);
+        this.y0 = p.Y - (this.M*p.X);
     }
 
     public Line2(Vector2 u, Vector2 v)
     {
-        this.m = (v.y - u.y)/(v.x - u.x);
-        this.x0 = u.x - (u.y/this.m);
-        this.y0 = u.y - (this.m*u.x);
+        this.m = (v.Y - u.Y)/(v.X - u.X);
+        this.x0 = u.X - (u.Y/this.M);
+        this.y0 = u.Y - (this.M*u.X);
     }
 
     //  Find a perpendicular line of the given line at
@@ -28,7 +40,7 @@ public class Line2
     public static Line2 Perpendicular(Line2 s, Vector2 p)
     {
         return new Line2(
-            -1/s.m,
+            -1/s.M,
             p
         );
     }
@@ -36,28 +48,28 @@ public class Line2
     //  Find an intersection between two given lines.
     public static Vector2 Intersection(Line2 s, Line2 t)
     {
-        if(s.m == t.m)
+        if(s.M == t.M)
         {
             return new Vector2(double.NaN, double.NaN);
         }
-        else if(double.IsInfinity(s.m))
+        else if(double.IsInfinity(s.M))
         {
-            return new Vector2(s.x0, t.m*(s.x0) + t.y0);
+            return new Vector2(s.X0, t.M*(s.X0) + t.Y0);
         }
-        else if(double.IsInfinity(t.m))
+        else if(double.IsInfinity(t.M))
         {
-            return new Vector2(t.x0, s.m*(t.x0) + s.y0);
+            return new Vector2(t.X0, s.M*(t.X0) + s.Y0);
         }
         else
         {
-            double pX = (t.y0 - s.y0)/(s.m - t.m);
-            double pY = (s.m * pX) + s.y0;
+            double pX = (t.Y0 - s.Y0)/(s.M - t.M);
+            double pY = (s.M * pX) + s.Y0;
             return new Vector2(pX, pY);
         }
     }
 
     public override string ToString()
     {
-        return string.Format("Line2(m: {0}, x0: {1}, y0: {2})", this.m, this.x0, this.y0);
+        return string.Format("Line2(m: {0}, x0: {1}, y0: {2})", this.M, this.X0, this.Y0);
     }
 }

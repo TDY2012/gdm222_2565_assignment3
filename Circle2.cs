@@ -1,10 +1,18 @@
 public class Circle2
 {
     //  Center.
-    public Vector2 c;
+    protected Vector2 c;
+    public Vector2 C
+    {
+        get { return this.c; }
+    }
 
     //  Radius.
-    public double r;
+    protected double r;
+    public double R
+    {
+        get { return this.r; }
+    }
 
     public Circle2(Vector2 c, double r)
     {
@@ -14,6 +22,6 @@ public class Circle2
 
     public override string ToString()
     {
-        return string.Format("Circle(c: {0}, r: {1})", this.c, this.r);
+        return string.Format("Circle(c: {0}, r: {1})", this.C, this.R);
     }
 }
