@@ -45,15 +45,21 @@ public class Vector2
     }
 
     //  Compute a product between given scala and vector.
-    public static double operator *(Vector2 u, double k)
+    public static Vector2 operator *(Vector2 u, double k)
     {
-        return (u.x * k) + (u.y * k);
+        return new Vector2(u.x * k, u.y * k);
     }
 
     //  Compute a product between given scala and vector.
-    public static double operator *(double k, Vector2 u)
+    public static Vector2 operator *(double k, Vector2 u)
     {
         return u * k;
+    }
+
+    //  Compute a quotient between given scala and vector.
+    public static Vector2 operator /(Vector2 u, double k)
+    {
+        return new Vector2(u.x / k, u.y / k);
     }
 
     public static Vector2 Copy(Vector2 u)
